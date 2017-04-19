@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main"
+            android:title="Fahrten ohne Fahrer" />
+
+        <item android:id="@+id/nav_zfahrten"
+            android:title="Zugeordnete Fahrten"/>
+
+        <item
+            android:id="@+id/nav_driver"
+            android:title="Fahrer" />
+        <item android:id="@+id/nav_sum"
+            android:title="Summe"/>
+        <item android:id="@+id/nav_ride"
+            android:title="Meine Fahrt"/>
+
+
+    </group>
+
+
+
+</menu>

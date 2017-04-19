@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cosicervin.administration.fragments.RideFragment"
+    android:orientation="horizontal">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/detailLabel"
+        android:layout_gravity="left|top"
+        android:layout_margin="10dp"
+        android:text="Preis"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zuordnen"
+        android:id="@+id/zuordnen_ride"
+        android:layout_gravity="right|bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/drivers_ride"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/zuordnen_ride"
+        android:layout_below="@+id/detailLabel"
+        android:choiceMode="singleChoice"
+        android:listSelector="@color/colorAccent"/>
+
+</RelativeLayout>

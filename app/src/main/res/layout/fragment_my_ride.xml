@@ -1,0 +1,297 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:padding="10dp"
+    tools:context="com.cosicervin.administration.fragments.MyRideFragment"
+    android:fillViewport="false">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Datum"
+            android:id="@+id/textView9"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="178dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/date"
+            android:layout_alignBaseline="@+id/textView9"
+            android:layout_toRightOf="@+id/textView9"
+            android:layout_toEndOf="@+id/textView9"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Zeit"
+            android:id="@+id/time_label"
+
+            android:layout_alignLeft="@+id/arrival"
+            android:layout_alignStart="@+id/arrival"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:ems="10"
+            android:layout_alignTop="@+id/date"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/time"
+            android:imeOptions="flagNoExtractUi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/plz_label"
+            android:text="PLZ"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignBottom="@+id/plz"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/plz"
+            android:layout_below="@+id/textView9"
+            android:layout_alignLeft="@+id/date"
+            android:layout_alignStart="@+id/date"
+            android:layout_toLeftOf="@+id/time_label"
+            android:layout_toStartOf="@+id/time_label"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Adresse"
+            android:id="@+id/addr_label"
+            android:layout_alignBottom="@+id/addr"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addr"
+            android:layout_below="@+id/plz"
+            android:layout_toRightOf="@+id/addr_label"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:imeOptions="flagNoExtractUi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Richtung"
+            android:id="@+id/dir_label"
+            android:layout_alignBottom="@+id/dir"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dir"
+            android:layout_below="@+id/addr"
+            android:layout_toRightOf="@+id/dir_label"
+            android:layout_alignRight="@+id/plz"
+            android:layout_alignEnd="@+id/plz"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Flugnummer"
+            android:id="@+id/flgnr_label"
+            android:layout_above="@+id/name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/flnr"
+            android:layout_below="@+id/dir"
+            android:layout_toLeftOf="@+id/ankunft_label"
+            android:layout_toEndOf="@+id/flgnr_label"
+            android:layout_toRightOf="@+id/flgnr_label"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Ankunft"
+            android:id="@+id/ankunft_label"
+            android:layout_alignBottom="@+id/flnr"
+            android:layout_toLeftOf="@+id/arrival"
+            android:layout_toStartOf="@+id/arrival"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/arrival"
+            android:layout_below="@+id/dir"
+            android:layout_alignRight="@+id/addr"
+            android:layout_alignEnd="@+id/addr"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Name"
+            android:id="@+id/name_label"
+            android:layout_alignBottom="@+id/name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:layout_below="@+id/flnr"
+            android:layout_toRightOf="@+id/addr_label"
+            android:layout_alignRight="@+id/date"
+            android:layout_alignEnd="@+id/date"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="E-Mail"
+            android:id="@+id/email_label"
+            android:layout_alignBottom="@+id/name"
+            android:layout_toRightOf="@+id/date"
+            android:layout_toEndOf="@+id/date"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mail"
+            android:layout_alignBottom="@+id/name"
+            android:layout_toRightOf="@+id/email_label"
+            android:layout_alignRight="@+id/addr"
+            android:layout_alignEnd="@+id/addr"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Telefon"
+            android:id="@+id/phone_label"
+            android:layout_alignBottom="@+id/phone"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/phone"
+            android:layout_below="@+id/name"
+            android:layout_alignLeft="@+id/name"
+            android:layout_alignStart="@+id/name"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Personen"
+            android:id="@+id/per_label"
+            android:layout_alignBottom="@+id/persons"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/persons"
+            android:layout_below="@+id/phone"
+            android:layout_toRightOf="@+id/per_label"
+            android:layout_toEndOf="@+id/per_label"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Koffer"
+            android:id="@+id/koffer_label"
+            android:layout_alignBottom="@+id/persons"
+            android:layout_toRightOf="@+id/persons"
+            android:layout_toEndOf="@+id/persons"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lugage"
+            android:layout_alignBottom="@+id/koffer_label"
+            android:layout_toRightOf="@+id/koffer_label"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Preis"
+            android:id="@+id/textView11"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/name"
+            android:layout_toEndOf="@+id/name"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/price"
+            android:layout_below="@+id/phone"
+            android:layout_toRightOf="@+id/phone"
+            android:imeOptions="flagNoExtractUi"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fertig"
+            android:id="@+id/done"
+            android:layout_alignBottom="@+id/price"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:imeOptions="flagNoExtractUi"/>
+
+
+    </RelativeLayout>
+</ScrollView>

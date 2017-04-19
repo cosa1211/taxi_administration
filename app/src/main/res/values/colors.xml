@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ORANGE COLOR FOR AIRPORTCAB24 -->
+   <color name="colorPrimary">#FDA428</color>
+    <color name="colorPrimaryDark">#FDA428</color>
+    <color name="colorAccent">#FDA428</color> -->
+    <!-- PINK COLOR FOR AIRFLUGTAXI -->
+   <!-- <color name="colorPrimary">#EF3FEE</color>
+    <color name="colorPrimaryDark">#EF3FEE</color>
+    <color name="colorAccent">#EF3FEE</color>-->
+
+</resources>

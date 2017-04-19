@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="airportcab24.com.cosicervin.myapplication.DriverFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Neuer Fahrer"
+        android:id="@+id/addButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fahrer entfernen"
+        android:id="@+id/deleteButton"
+        android:layout_below="@+id/driverList"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/driverList"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:choiceMode="singleChoice"
+        android:listSelector="@color/colorAccent"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/addButton" />
+
+</RelativeLayout>

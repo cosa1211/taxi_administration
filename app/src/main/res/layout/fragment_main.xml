@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="airportcab24.com.cosicervin.myapplication.MainFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="267dp"
+        android:id="@+id/rides_list"
+        android:layout_gravity="center_horizontal|top"
+        android:choiceMode="singleChoice"
+        android:listSelector="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

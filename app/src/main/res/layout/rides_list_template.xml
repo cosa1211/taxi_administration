@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="7">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Datum"
+        android:id="@+id/ride_date"
+        android:textColor="#000000"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+        <!--android:background="@drawable/borderred"-->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Zeit"
+        android:id="@+id/ride_time"
+        android:textColor="#000000"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PLZ"
+        android:id="@+id/ride_plz"
+        android:textColor="#000000"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Adresse"
+        android:id="@+id/ride_addr"
+        android:textColor="#000000"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_weight="2"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Richtung"
+        android:id="@+id/ride_direction"
+        android:textColor="#000000"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Preis"
+        android:id="@+id/ride_price"
+        android:textColor="#000000"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+</LinearLayout>
