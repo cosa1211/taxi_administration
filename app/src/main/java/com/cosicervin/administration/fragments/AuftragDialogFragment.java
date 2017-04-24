@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.cosicervin.administration.R;
 
-import domain.Ride;
+import com.cosicervin.administration.domain.Ride;
 
 
 /**

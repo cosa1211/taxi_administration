@@ -22,6 +22,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.cosicervin.administration.Params;
 import com.cosicervin.administration.R;
+import com.cosicervin.administration.domain.Driver;
+import com.cosicervin.administration.domain.DriverAdapter;
+import com.cosicervin.administration.domain.Ride;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,10 +33,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import domain.Driver;
-import domain.DriverAdapter;
-import domain.Ride;
 
 
 /**
@@ -93,7 +92,7 @@ public class RideFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 send();
-                MainFragment fragment = new MainFragment();
+                MainFragment fragment = new MainFragment(null, null); //todo add server token and url
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, (Fragment) fragment);
                 fragmentTransaction.commit();

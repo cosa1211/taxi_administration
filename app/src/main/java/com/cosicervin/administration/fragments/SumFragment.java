@@ -22,6 +22,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.cosicervin.administration.Params;
 import com.cosicervin.administration.R;
+import com.cosicervin.administration.domain.Sum;
+import com.cosicervin.administration.listAdapters.SumAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,9 +31,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import domain.Sum;
-import listAdapters.SumAdapter;
 
 
 /**
@@ -76,6 +75,7 @@ public class SumFragment extends Fragment implements GeneralFragment {
 
     /**
      * todo do a string request
+
      */
     public void  getFromDB(){
 
@@ -121,7 +121,7 @@ public class SumFragment extends Fragment implements GeneralFragment {
         }
         insgesamt.setText("Insgesamt: " + Integer.toString(toReturn) + " €");
     }
-
+        //todo test
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

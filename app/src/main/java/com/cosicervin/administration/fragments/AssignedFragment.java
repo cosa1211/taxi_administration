@@ -26,8 +26,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import domain.Ride;
-import listAdapters.RideListAdapter;
+import com.cosicervin.administration.domain.Ride;
+import com.cosicervin.administration.listAdapters.RideListAdapter;
 
 
 /**

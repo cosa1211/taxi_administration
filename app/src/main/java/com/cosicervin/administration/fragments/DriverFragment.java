@@ -25,8 +25,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.cosicervin.administration.Params;
 import com.cosicervin.administration.R;
-import com.cosicervin.administration.fragments.AddDriverFragment;
-import com.cosicervin.administration.fragments.GeneralFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,8 +35,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import domain.Driver;
-import domain.DriverAdapter;
+import com.cosicervin.administration.domain.Driver;
+import com.cosicervin.administration.domain.DriverAdapter;
 
 
 /**
