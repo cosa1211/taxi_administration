@@ -4,6 +4,7 @@ package com.cosicervin.administration.fragments;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -25,6 +26,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.cosicervin.administration.Params;
 import com.cosicervin.administration.R;
+import com.cosicervin.administration.domain.Ride;
+import com.cosicervin.administration.listAdapters.RideListAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,27 +37,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import domain.Ride;
-import listAdapters.RideListAdapter;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment implements GeneralFragment {
+
+    String server_request_token;
+
+    String server_url;
+
     ListView listView;
+
     View view;
+
     RideListAdapter listAdapter;
+
     RequestQueue requestQueue;
+
     String URL = Params.URL+ "getAllRides.php";
+
     String delURL=Params.URL+"deleteRide.php";
+
     ArrayList <Ride> ridesInDataBase;
+
     JSONArray tempArray;
+
     int selectedRide;
 
 
-    public MainFragment() {
-        // Required empty public constructor
+    public MainFragment(String token, String url) {
+        server_request_token = token;
+        server_url = url;
     }
 
 
@@ -65,6 +79,9 @@ public class MainFragment extends Fragment implements GeneralFragment {
 
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        checkIfTokenExists();
+
         listView  = (ListView) view.findViewById(R.id.rides_list);
         listAdapter = new RideListAdapter(getActivity().getApplicationContext(),R.layout.rides_list_template);
         ridesInDataBase = new ArrayList<>();
@@ -72,7 +89,7 @@ public class MainFragment extends Fragment implements GeneralFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedRide = position;
+                selectedRide = position - 1;
             }
         });
 
@@ -97,7 +114,7 @@ public class MainFragment extends Fragment implements GeneralFragment {
             menu.add("Anzeigen");
             menu.add("Zuordnen");
             menu.add("Löschen");
-
+                                    //todo add editing
         }
     }
 
@@ -238,6 +255,14 @@ public class MainFragment extends Fragment implements GeneralFragment {
         requestQueue.add(request);
         listAdapter.remove(selectedRide);
         listAdapter.notifyDataSetChanged();
+    }
+
+    private void checkIfTokenExists(){
+        if(server_request_token != null) return;
+        GeneralFragment fragment = new NotLoggedInFragment();
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, (Fragment) fragment);
+        fragmentTransaction.commit();
     }
 
 

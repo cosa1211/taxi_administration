@@ -21,9 +21,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.cosicervin.administration.Params;
 import com.cosicervin.administration.R;
-import com.cosicervin.administration.fragments.DatePickerFragment;
-import com.cosicervin.administration.fragments.GeneralFragment;
-import com.cosicervin.administration.fragments.MainFragment;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -116,7 +113,7 @@ public class MyRideFragment extends Fragment implements GeneralFragment {
             public void onResponse(String response) {
                     Toast.makeText(getActivity().getApplicationContext(),"Fahrt wurde hinzugefugt.",Toast.LENGTH_LONG).show();
 
-                    Fragment fragment = new MainFragment();
+                    Fragment fragment = new MainFragment(null, null); // todo add server token and url
                     android.support.v4.app.FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, fragment);
                     fragmentTransaction.commit();
