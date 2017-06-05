@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cosicervin.administration.fragments.AssignDriverFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fahrer auswählen:"
+        android:textColor="@android:color/background_dark"
+        android:textSize="17sp"
+        tools:text="Ausgewähtler Fahrer:"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:id="@+id/drivers_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/assign_driver_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zuordnen"
+        android:layout_below="@+id/drivers_spinner"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

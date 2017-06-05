@@ -4,6 +4,7 @@ package com.cosicervin.administration.fragments;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,17 +15,17 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.cosicervin.administration.Params;
+import com.cosicervin.administration.CustomRequest;
+import com.cosicervin.administration.MyRequestQueue;
 import com.cosicervin.administration.R;
+import com.cosicervin.administration.activities.MainActivity;
+import com.cosicervin.administration.domain.Driver;
+import com.cosicervin.administration.fragments.dialogs.AddDriverFragment;
+import com.cosicervin.administration.listAdapters.DriverAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,22 +36,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.cosicervin.administration.domain.Driver;
-import com.cosicervin.administration.domain.DriverAdapter;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DriverFragment extends Fragment implements GeneralFragment {
     int toDelete;
+
     ListView listView;
+
     DriverAdapter driverAdapter;
-    RequestQueue queue=null;
+
+    RequestQueue queue = null;
+
     List<Driver> drivers;
+
     int c = 0;
-    String URLget = Params.URL+"getdrivers.php";
-    String URLdel =Params.URL+ "deleteDriver.php";
+
+    String server_url;
+
+    String serverToken;
+
+    SwipeRefreshLayout swipeLayout;
+
+    View view;
+
     public DriverFragment() {
 
         // Required empty public constructor
@@ -61,21 +71,39 @@ public class DriverFragment extends Fragment implements GeneralFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view;
+
         view = inflater.inflate(R.layout.fragment_driver, container, false);
 
-        queue = Volley.newRequestQueue(getActivity());
+        swipeLayout =(SwipeRefreshLayout) view.findViewById(R.id.swipe_drivers);
 
-        toDelete=-1;
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                drivers.clear();
+                driverAdapter.deleteAll();
+                driverAdapter.notifyDataSetChanged();
+                fetchAllDrivers();
+                driverAdapter.notifyDataSetChanged();
+                swipeLayout.setRefreshing(false);
+            }
+        });
+
+        queue = MyRequestQueue.getInstance(getContext()).getRequestQueue();
+
+        toDelete = -1;
 
         listView = (ListView) view.findViewById(R.id.driverList);
 
         drivers = new ArrayList();
 
+        serverToken = ((MainActivity) getActivity()).server_request_token;
+
+        server_url = ((MainActivity)getActivity()).server_url;
+
         driverAdapter = new DriverAdapter(getActivity().getApplicationContext(),R.layout.driver_listview);
         listView.setAdapter(driverAdapter);
 
-        getFromDb();
+        fetchAllDrivers();
 
         driverAdapter.notifyDataSetChanged();
 
@@ -89,11 +117,18 @@ public class DriverFragment extends Fragment implements GeneralFragment {
         });
 
         driverAdapter.notifyDataSetChanged();
+
+
         newDriver(view);
+
         deleteDriver(view);
+
         driverAdapter.notifyDataSetChanged();
+
         queue.cancelAll("END END END");
+
         driverAdapter.notifyDataSetChanged();
+
         Log.e("size",Integer.toString(driverAdapter.getCount()));
 
         return view;
@@ -101,52 +136,50 @@ public class DriverFragment extends Fragment implements GeneralFragment {
 
 
 
-    public void getFromDb(){
+    public void fetchAllDrivers(){
+        Map<String, String> params = new HashMap<>();
+        params.put("token", serverToken);
+        params.put("service","5");
 
-        driverAdapter.deleteAll();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Method.GET, URLget,(String)null, new Response.Listener<JSONObject>() {
+        final String URL = server_url + "/administration_services.php";
+
+        CustomRequest customRequest = new CustomRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONObject jsonObject) {
-                Log.d("Response:",jsonObject.toString());
-                JSONArray jArray;
+            public void onResponse(JSONObject response) {
                 try {
-                    jArray = jsonObject.getJSONArray("drivers");
-                    for (int i=0; i<jArray.length();i++){
-                        JSONObject o = jArray.getJSONObject(i);
-                        Driver dr = new Driver();
-                        dr.setName(o.getString("name"));
-                        dr.setMail(o.getString("email"));
-                        dr.setPhone(o.getString("phone"));
-                        dr.setCar(o.getString("car"));
-                        driverAdapter.add(dr);
 
-                        driverAdapter.notifyDataSetChanged();
+                    JSONArray jsonArray = response.getJSONArray("drivers");
 
+                    for(int i = 0; i < jsonArray.length(); i++){
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        Driver driver = new Driver();
+                        driver.setId(object.getString("driver_id"));
+                        driver.setName(object.getString("driver_name"));
+                        driver.setMail(object.getString("driver_email"));
+                        driver.setPhone(object.getString("driver_phone"));
+                        driver.setCar(object.getString("driver_car"));
+                        Log.i("drivers", driver.toString());
+                        drivers.add(driver);
                     }
+
+                    driverAdapter.deleteAll();
+                    driverAdapter.notifyDataSetChanged();
+                    driverAdapter.addAll(drivers);
+                    driverAdapter.notifyDataSetChanged();
+
                 } catch (JSONException e) {
-                    Log.e("JSON Error",e.toString());
                     e.printStackTrace();
-
                 }
-
             }
+
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError volleyError) {
+            public void onErrorResponse(VolleyError error) {
 
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String> params = new HashMap<>();
-                params.put(Integer.toString(c),Integer.toString(c));
-                c++;
-                return params;
-            }
+        });
 
-        };
-        jsonObjectRequest.setShouldCache(false);
-        queue.add(jsonObjectRequest);
+        queue.add(customRequest);
 
 
     }
@@ -158,36 +191,38 @@ public class DriverFragment extends Fragment implements GeneralFragment {
 
     }
 
-    public  void deleteDriver(int position) {
+    public  void deleteDriver() {
+        Map<String, String> params = new HashMap<>();
+        params.put("token", serverToken);
+        params.put("service", "12");
+        params.put("driver_id", drivers.get(toDelete).getId());
 
+        final String URL = server_url + "/administration_services.php";
 
-
-        final Driver driver = (Driver) driverAdapter.getItem(position);
-        StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, URLdel, new Response.Listener<String>() {
+        CustomRequest customRequest = new CustomRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(JSONObject response) {
+                int code = -1;
+
+                try {
+                    code = response.getInt("code");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if(code == 2){
+                    Toast.makeText(getActivity(), "Fahrer entfernt.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getActivity(), "Error.", Toast.LENGTH_SHORT).show();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("error",error.toString());
 
             }
-        }){
-            @Override
-            public Map<String,String> getParams()throws AuthFailureError {
-                HashMap<String,String> headers = new HashMap<>();
-                headers.put("name",driver.getName());
-                headers.put("mail",driver.getMail());
-                headers.put("phone", driver.getPhone());
-                return  headers;
+        });
 
-
-            }
-        };
-
-        queue.add(jsonObjectRequest);
-        driverAdapter.notifyDataSetChanged();
+        queue.add(customRequest);
     }
 
 
@@ -202,7 +237,7 @@ public class DriverFragment extends Fragment implements GeneralFragment {
                             .setMessage("Sind Sie sicher das Sie diesen Fahrer entfernen wollen ?")
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    deleteDriver(toDelete);
+                                    deleteDriver();
                                     Log.e("todelete", Integer.toString(driverAdapter.getCount()));
                                     driverAdapter.remove(toDelete);
 
@@ -233,10 +268,8 @@ public class DriverFragment extends Fragment implements GeneralFragment {
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddDriverFragment fragment = new AddDriverFragment();
-                android.support.v4.app.FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, (Fragment) fragment);
-                fragmentTransaction.commit();
+               AddDriverFragment addDriverFragment = new AddDriverFragment();
+                addDriverFragment.show(getFragmentManager(), "Neuer Fahrer");
             }
         });
 

@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.cosicervin.administration.fragments.SumFragment">
@@ -7,77 +8,78 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="VOM: "
-        android:id="@+id/textView6"
         android:layout_alignBottom="@+id/start_date"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textIsSelectable="false"
-        android:textSize="20dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/start_date"
-        android:layout_alignBottom="@+id/end_date"
-        android:layout_toRightOf="@+id/textView6"
-        android:layout_toEndOf="@+id/textView6" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="VOM: "
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="BIS: "
-        android:id="@+id/textView7"
-        android:layout_alignTop="@+id/textView6"
-        android:layout_toRightOf="@+id/start_date"
-        android:layout_toEndOf="@+id/start_date"
         android:textIsSelectable="false"
         android:textSize="20dp" />
 
     <EditText
+        android:id="@+id/start_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:layout_alignBottom="@+id/end_date"
+        android:layout_toEndOf="@+id/textView6"
+        android:layout_toRightOf="@+id/textView6"
         android:ems="10"
-        android:id="@+id/end_date"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView7"
-        android:layout_toEndOf="@+id/textView7" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GO"
-        android:id="@+id/go_button"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/end_date" />
+        android:inputType="date" />
 
     <TextView
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Insgesamt"
-        android:id="@+id/insgesamt"
+        android:layout_alignTop="@+id/textView6"
+        android:layout_toEndOf="@+id/start_date"
+        android:layout_toRightOf="@+id/start_date"
+        android:text="BIS: "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textIsSelectable="false"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/end_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView7"
+        android:layout_toRightOf="@+id/textView7"
+        android:ems="10"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/sum_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="Insgesamt"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     <!--android:background="@drawable/borderred"-->
 
     <ListView
+        android:id="@+id/driver_sum_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/driver_sum_list"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/insgesamt"
-        android:layout_below="@+id/go_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView6"
         android:choiceMode="singleChoice"
-        />
+        android:layout_above="@+id/sum_label" />
+
+    <Spinner
+        android:id="@+id/select_driver_for_sum_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/driver_sum_list"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/end_date"
+        android:layout_toRightOf="@+id/end_date" />
 
 </RelativeLayout>

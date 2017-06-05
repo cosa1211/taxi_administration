@@ -8,6 +8,7 @@ public class Driver {
     String mail;
     String phone;
     String car;
+    String id;
     public  Driver(){
 
     }
@@ -28,6 +29,10 @@ public class Driver {
         this.car = car;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getCar() {
         return car;
     }
@@ -35,6 +40,10 @@ public class Driver {
     public String getName() {
 
         return name;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getMail() {

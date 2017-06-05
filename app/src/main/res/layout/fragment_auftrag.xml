@@ -2,155 +2,420 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AuftragDialogFragment">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.AuftragDialogFragment">
+    tools:context=".fragments.dialogs.AuftragDialogFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Datum:"
-        android:id="@+id/datum_auftrag"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.dialogs.AuftragDialogFragment"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Zeit: "
-        android:id="@+id/zeit_auftrag"
-        android:layout_below="@+id/datum_auftrag"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="PLZ: "
-        android:id="@+id/plz_auftrag"
-        android:layout_below="@+id/zeit_auftrag"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/datum_auftrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Datum:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Adresse: "
-        android:id="@+id/addr_auftrag"
-        android:layout_below="@+id/plz_auftrag"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/zeit_auftrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/datum_auftrag"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Zeit: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Richtung:"
-        android:id="@+id/dir_a"
-        android:layout_below="@+id/addr_auftrag"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/plz_auftrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/zeit_auftrag"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="PLZ: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Flugnummer: "
-        android:id="@+id/flnr_a"
-        android:layout_below="@+id/dir_a"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/addr_auftrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/plz_auftrag"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Adresse: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Ankunft aus: "
-        android:id="@+id/arrival_a"
-        android:layout_below="@+id/flnr_a"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/dir_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/addr_auftrag"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Richtung:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Name: "
-        android:id="@+id/name_a"
-        android:layout_below="@+id/arrival_a"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/flnr_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/dir_a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Flugnummer: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="E-Mail: "
-        android:id="@+id/mail_a"
-        android:layout_below="@+id/name_a"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/arrival_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/flnr_a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Ankunft aus: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Telefon: "
-        android:id="@+id/phone_a"
-        android:layout_below="@+id/mail_a"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/name_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/arrival_a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Name: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Personen: "
-        android:id="@+id/pers_a"
-        android:layout_below="@+id/phone_a"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/mail_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/name_a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="E-Mail: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Koffer: "
-        android:id="@+id/lugage_a"
-        android:layout_below="@+id/pers_a"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/phone_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/mail_a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Telefon: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Preis: "
-        android:id="@+id/price"
-        android:layout_below="@+id/lugage_a"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="20dp" />
+        <TextView
+            android:id="@+id/pers_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/phone_a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Personen: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Kindersitz: "
-        android:id="@+id/childseat"
-        android:layout_below="@id/price"
-        android:layout_alignParentBottom="true"/>
+        <TextView
+            android:id="@+id/lugage_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/pers_a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Koffer: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lugage_a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Preis: "
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/childseat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kindersitz: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            android:layout_below="@+id/price"
+            android:layout_alignLeft="@+id/price"
+            android:layout_alignStart="@+id/price" />
+
+        <TextView
+            android:id="@+id/date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:layout_alignBottom="@+id/datum_auftrag"
+            android:layout_toRightOf="@+id/flnr_a"
+            android:layout_toEndOf="@+id/flnr_a"
+            android:layout_marginLeft="26dp"
+            android:layout_marginStart="26dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:layout_alignBottom="@+id/zeit_auftrag"
+            android:layout_alignLeft="@+id/date_label"
+            android:layout_alignStart="@+id/date_label"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/zip_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/addr_auftrag"
+
+            android:layout_alignStart="@+id/time_label"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/address_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/dir_a"
+            android:layout_alignLeft="@+id/zip_label"
+
+            android:layout_alignStart="@+id/zip_label"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/direction_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/flnr_a"
+            android:layout_alignLeft="@+id/address_label"
+
+            android:layout_alignStart="@+id/address_label"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/flight_number_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:layout_alignBottom="@+id/flnr_a"
+            android:layout_alignLeft="@+id/direction_label"
+            android:layout_alignStart="@+id/direction_label"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/comes_from_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/arrival_a"
+            android:layout_alignLeft="@+id/flight_number_label"
+            android:layout_alignStart="@+id/flight_number_label"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:layout_alignBottom="@+id/name_a"
+            android:layout_alignLeft="@+id/comes_from_label"
+            android:layout_alignStart="@+id/comes_from_label"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/email_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/phone_a"
+            android:layout_alignLeft="@+id/name_label"
+            android:layout_alignParentRight="true"
+            android:layout_alignStart="@+id/name_label"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/phone_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/pers_a"
+            android:layout_alignLeft="@+id/email_label"
+
+            android:layout_alignStart="@+id/email_label"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/persons_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pers_a"
+            android:layout_alignLeft="@+id/phone_label"
+
+            android:layout_alignStart="@+id/phone_label"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/luagege_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:layout_alignBottom="@+id/lugage_a"
+            android:layout_alignLeft="@+id/persons_label"
+            android:layout_alignStart="@+id/persons_label"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:layout_alignBottom="@+id/price"
+            android:layout_alignLeft="@+id/luagege_label"
+            android:layout_alignStart="@+id/luagege_label"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/child_seat_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
 
-</RelativeLayout>
+            android:maxLines="1"
+            android:text="das ist ein besipil @android:string/VideoView_error_text_invalid_progressive_playback"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            android:layout_below="@+id/price_label"
+            android:layout_alignLeft="@+id/price_label"
+            android:layout_alignStart="@+id/price_label" />
+
+        <TextView
+            android:id="@+id/comment_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anmerkung"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"
+            android:layout_below="@+id/childseat"
+            android:layout_alignLeft="@+id/childseat"
+            android:layout_alignStart="@+id/childseat" />
+    </RelativeLayout>
+
+
 </ScrollView>

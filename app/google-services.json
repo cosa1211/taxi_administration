@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "348516966304",
+    "firebase_url": "https://administration2-d8154.firebaseio.com",
+    "project_id": "administration2-d8154",
+    "storage_bucket": "administration2-d8154.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348516966304:android:547bec882573f981",
+        "android_client_info": {
+          "package_name": "com.cosicervin.administration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348516966304-runrjn9ekl16tsagic4onr1nao0tr65o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cosicervin.administration",
+            "certificate_hash": "38be6c24557a3eff4497557798b7a26513f8b6da"
+          }
+        },
+        {
+          "client_id": "348516966304-8oq25cbgs7s3496fq7d0v07bfc3l7hlq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA73VWpcGOtQuZak829FBTWFKSRuQQN1fI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348516966304-8oq25cbgs7s3496fq7d0v07bfc3l7hlq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-package com.cosicervin.administration.domain;
+package com.cosicervin.administration.listAdapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.cosicervin.administration.R;
+import com.cosicervin.administration.domain.Driver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +44,7 @@ public class DriverAdapter extends ArrayAdapter {
         notifyDataSetChanged();
     }
     public  void deleteAll(){
-        for (int i=0; i<this.list.size();i++){
-            this.list.remove(i);
-        }
+        list.clear();
     }
 
     @Override

@@ -10,40 +10,39 @@
         android:id="@+id/username_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/server_edit"
-        android:layout_marginLeft="49dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="38dp"
-        android:layout_toEndOf="@+id/password_edit"
-        android:layout_toRightOf="@+id/password_edit"
+        android:layout_marginTop="78dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        android:text="admin" />
+        android:text="admin"
+        android:layout_below="@+id/server_edit"
+        android:layout_alignLeft="@+id/password_edit"
+        android:layout_alignStart="@+id/password_edit" />
 
     <EditText
         android:id="@+id/password_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/server_edit"
-        android:layout_alignStart="@+id/server_edit"
-        android:layout_alignTop="@+id/username_edit"
-        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:text="admin" />
+        android:text="admin"
+        android:layout_below="@+id/username_edit"
+        android:layout_alignLeft="@+id/server_edit"
+        android:layout_alignStart="@+id/server_edit"
+        android:layout_marginTop="87dp" />
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="61dp"
-        android:layout_marginStart="61dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
         android:text="Log in"
-        android:layout_below="@+id/password_edit"
+        android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/password_edit"
-        android:layout_alignStart="@+id/password_edit" />
+        android:layout_alignStart="@+id/password_edit"
+        android:layout_marginBottom="33dp" />
 
     <EditText
         android:id="@+id/server_edit"
@@ -52,12 +51,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginLeft="283dp"
+        android:layout_marginStart="283dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="Server"
         android:inputType="textPersonName"
-        android:text="http://tests.ce-design.at/" />
+        android:text="http://tests.ce-design.at/fa" />
 
 </RelativeLayout>

@@ -18,7 +18,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.cosicervin.administration.CustomRequest;
-import com.cosicervin.administration.MainActivity;
+import com.cosicervin.administration.activities.MainActivity;
 import com.cosicervin.administration.MyRequestQueue;
 import com.cosicervin.administration.R;
 import com.cosicervin.administration.server.database.ServerDataContract;
@@ -97,7 +97,7 @@ public class LoginFragment extends Fragment {
 
         server = serverEditText.getText().toString();
 
-        String url = server + "/server_authentication.php";
+        final String url = server + "/server_authentication.php";
 
         String passwordHash = sha256(password);
 
@@ -130,7 +130,7 @@ public class LoginFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                GeneralFragment fragment = new MainFragment(server, token);
+                GeneralFragment fragment = new MainFragment(token, url);
                 FragmentTransaction fm = getActivity().getSupportFragmentManager().beginTransaction();
                 fm.replace(R.id.fragment_container, (Fragment) fragment);
                 fm.commit();
@@ -139,7 +139,7 @@ public class LoginFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity().getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getActivity().getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         queue.add(jsonObjectRequest);
@@ -178,7 +178,6 @@ public class LoginFragment extends Fragment {
         String[] selectionArgs = {Long.toString(id)};
 
         db.delete(ServerDataContract.ServerData.TABLE_NAME, selection, selectionArgs);
-
 
     }
 

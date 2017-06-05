@@ -1,4 +1,4 @@
-package com.cosicervin.administration;
+package com.cosicervin.administration.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,13 +25,16 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.cosicervin.administration.fragments.AssignedFragment;
-import com.cosicervin.administration.fragments.CouponsFragment;
+import com.cosicervin.administration.CustomRequest;
+import com.cosicervin.administration.MyRequestQueue;
+import com.cosicervin.administration.R;
+import com.cosicervin.administration.fragments.ChangePriceFragment;
 import com.cosicervin.administration.fragments.DriverFragment;
 import com.cosicervin.administration.fragments.GeneralFragment;
 import com.cosicervin.administration.fragments.LoginFragment;
 import com.cosicervin.administration.fragments.MainFragment;
 import com.cosicervin.administration.fragments.MyRideFragment;
+import com.cosicervin.administration.fragments.OtherValuesFragment;
 import com.cosicervin.administration.fragments.SumFragment;
 import com.cosicervin.administration.server.database.ServerDataContract;
 import com.cosicervin.administration.server.database.ServerDataDbHelper;
@@ -52,12 +55,16 @@ public class MainActivity extends AppCompatActivity
     /**
      * Token that is sent to the server on every request
      */
-    public static String server_request_token = null;
-    public static String server_url = null;
+    public  String server_request_token = null;
+    public  String server_url = null;
+    public  String server_services = null;
+
 
     ServerDataDbHelper dbHelper;
 
     SQLiteDatabase db;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +76,9 @@ public class MainActivity extends AppCompatActivity
         db = dbHelper.getWritableDatabase();
 
         getServerInfo();
+
+        server_services = server_url + "/administration_services.php";
+
 
         MainFragment fragment = new MainFragment(server_request_token, server_url);
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -172,15 +182,15 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_driver) {
             fragment =  new DriverFragment();
-        }else if (id == R.id.nav_zfahrten){
-            fragment = new AssignedFragment();
         }else if (id == R.id.nav_sum){
             fragment = new SumFragment();
-        }else  if(id ==R.id.nav_ride){
+        }else if(id == R.id.nav_ride){
             fragment = new MyRideFragment();
-        }//else if (id == R.id.nav_coupon){
-           // fragment = new CouponsFragment();
-       // }
+        }else if(id == R.id.nav_price){
+            fragment = new ChangePriceFragment();
+        }else if(id == R.id.nav_other_price){
+            fragment = new OtherValuesFragment();
+        }
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, (Fragment) fragment);
         fragmentTransaction.commit();
@@ -192,13 +202,7 @@ public class MainActivity extends AppCompatActivity
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanResult != null) {
-            // handle scan result
-            Toast t = Toast.makeText(getApplicationContext(),scanResult.getContents(),Toast.LENGTH_LONG);
-            t.show();
-            GeneralFragment fragment = new CouponsFragment(scanResult.getContents());
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, (Fragment) fragment);
-            fragmentTransaction.commit();
+
         }
         // else continue with any other code you need in the method
     }

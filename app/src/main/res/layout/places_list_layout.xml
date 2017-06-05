@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingTop="5dp"
+    android:weightSum="5">
+
+
+    <EditText
+        android:id="@+id/place_name_edit"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingTop="5dp"
+        android:text="Name"
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:id="@+id/place_car_price_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:paddingTop="5dp"
+        android:text="Name"
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:id="@+id/place_van_price_edit"
+        android:layout_width="163dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:paddingTop="5dp"
+        android:text="Name"
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:id="@+id/place_bus_price_edit"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:paddingTop="5dp"
+        android:text="Name"
+        android:textColor="@android:color/background_dark" />
+
+    <Button
+        android:id="@+id/save_place_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:text="Speichern"
+        android:textColor="@android:color/background_dark" />
+
+</LinearLayout>

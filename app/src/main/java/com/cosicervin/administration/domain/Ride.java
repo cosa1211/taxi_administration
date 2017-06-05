@@ -13,7 +13,12 @@ public class Ride {
     String date,time,plz,dir,addr,flightNr,arrival,name,email,phone,persons,lugage;
     int id,price;
     boolean hasdriver;
+
     boolean childseat;
+
+    boolean pending;
+
+    String comment;
 
     public Ride(String date, String time, String plz, String dir, String addr, int price) {
         this.date = date;
@@ -66,6 +71,14 @@ public class Ride {
     public boolean isHasdriver() {
 
         return hasdriver;
+    }
+
+    public void setPending(boolean pending) {
+        this.pending = pending;
+    }
+
+    public boolean isPending() {
+        return pending;
     }
 
     public String getLugage() {
@@ -133,6 +146,14 @@ public class Ride {
         this.date = date;
     }
 
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
     public String getDate() {
         Date d;
         String toReturn = null;
@@ -164,5 +185,27 @@ public class Ride {
 
     public int getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Ride{" +
+                "date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", plz='" + plz + '\'' +
+                ", dir='" + dir + '\'' +
+                ", addr='" + addr + '\'' +
+                ", flightNr='" + flightNr + '\'' +
+                ", arrival='" + arrival + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", persons='" + persons + '\'' +
+                ", lugage='" + lugage + '\'' +
+                ", id=" + id +
+                ", price=" + price +
+                ", hasdriver=" + hasdriver +
+                ", childseat=" + childseat +
+                '}';
     }
 }
