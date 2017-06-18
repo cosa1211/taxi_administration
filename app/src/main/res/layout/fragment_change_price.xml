@@ -52,7 +52,7 @@
             android:id="@+id/new_place_button"/>
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/price_swipe_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -60,8 +60,10 @@
         <ListView
             android:id="@+id/places_listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:listSelector="@color/colorAccent"
+            android:choiceMode="singleChoice"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
 </LinearLayout>

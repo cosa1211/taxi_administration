@@ -41,6 +41,8 @@ public class MyRideFragment extends Fragment implements GeneralFragment {
 
     Spinner dirSpinner;
 
+    String selectedDate;
+
     int price;
 
     RequestQueue queue;
@@ -61,7 +63,9 @@ public class MyRideFragment extends Fragment implements GeneralFragment {
         m = calendar.get(Calendar.MONTH)+1;
 
         dateEdit = (EditText)view.findViewById(R.id.date_ride_edit);
-        dateEdit.setText(d+"."+m+"."+y);
+
+        selectedDate = d + "." + m + "." + y;
+        dateEdit.setText(selectedDate);
         dateEdit.setKeyListener(null);
 
         timeEdit = (EditText)view.findViewById(R.id.time);
@@ -160,6 +164,7 @@ public class MyRideFragment extends Fragment implements GeneralFragment {
     }
 
     public  void getVals(){
+
         date = dateEdit.getText().toString();
 
         time = timeEdit.getText().toString();
@@ -190,9 +195,9 @@ public class MyRideFragment extends Fragment implements GeneralFragment {
     public void insertIntoDB(){
         HashMap<String,String > params = new HashMap<>();
 
-        params.put("date", date);
-        params.put("time", time);
-        params.put("zip", plz);
+        params.put("ride_date", date);
+        params.put("ride_time", time);
+        params.put("ride_zip", plz);
         params.put("address", addr);
         params.put("direction", dir);
         params.put("comes_from", arrival);
@@ -258,6 +263,8 @@ public class MyRideFragment extends Fragment implements GeneralFragment {
 
             dateEdit.setText(String.valueOf(dayOfMonth) + "." + String.valueOf(monthOfYear+1)
                     + "." + String.valueOf(year));
+           // selectedDate =(String.valueOf(year) + "-" + String.valueOf(monthOfYear + 1) + "-" +String.valueOf(dayOfMonth));
+
         }
     };
 

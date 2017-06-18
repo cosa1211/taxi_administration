@@ -34,15 +34,15 @@ public class NewPlaceFragment extends DialogFragment {
 
     View view;
 
-    private EditText placeNameEdit;
+    protected EditText placeNameEdit;
 
-    private EditText placeCarPriceEdit;
+    protected EditText placeCarPriceEdit;
 
-    private EditText placeVanPriceEdit;
+    protected EditText placeVanPriceEdit;
 
-    private EditText placeBusPriceEdit;
+    protected EditText placeBusPriceEdit;
 
-    private Button savePlaceButton;
+    protected Button savePlaceButton;
 
     String token;
 
@@ -52,7 +52,7 @@ public class NewPlaceFragment extends DialogFragment {
 
     RequestQueue queue;
 
-    private void assignViews() {
+    protected void assignViews() {
         placeNameEdit = (EditText) view.findViewById(R.id.place_name_edit);
 
         placeCarPriceEdit = (EditText) view.findViewById(R.id.place_car_price_edit);
@@ -88,7 +88,7 @@ public class NewPlaceFragment extends DialogFragment {
                     placeToSave.setBusPrice(Integer.parseInt(busPriceString));
                     placeToSave.setName(placeName);
 
-                    saveNewPlace();
+                    save();
                     dismiss();
                 }
             }
@@ -107,9 +107,8 @@ public class NewPlaceFragment extends DialogFragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_new_place, container, false);
 
-        token = ((MainActivity)getActivity()).server_request_token;
-        server = ((MainActivity) getActivity()).server_url;
 
+        initializeServerData();
 
 
         assignViews();
@@ -118,7 +117,12 @@ public class NewPlaceFragment extends DialogFragment {
         return view;
     }
 
-    private void saveNewPlace(){
+    protected void initializeServerData(){
+        token = ((MainActivity)getActivity()).server_request_token;
+        server = ((MainActivity) getActivity()).server_url;
+    }
+
+    protected void save(){
 
         final String URL = server + "/administration_services.php";
 

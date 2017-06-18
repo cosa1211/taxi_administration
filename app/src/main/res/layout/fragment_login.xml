@@ -36,13 +36,13 @@
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="56dp"
-        android:layout_marginStart="56dp"
         android:text="Log in"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/password_edit"
-        android:layout_alignStart="@+id/password_edit"
-        android:layout_marginBottom="33dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="181dp"
+        android:layout_marginEnd="181dp"
+        android:layout_marginBottom="31dp" />
 
     <EditText
         android:id="@+id/server_edit"
@@ -57,6 +57,6 @@
         android:ems="10"
         android:hint="Server"
         android:inputType="textPersonName"
-        android:text="http://tests.ce-design.at/fa" />
+        android:text="http://www.airflixtaxi.at/admin" />
 
 </RelativeLayout>

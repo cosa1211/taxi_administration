@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ import com.cosicervin.administration.MyRequestQueue;
 import com.cosicervin.administration.R;
 import com.cosicervin.administration.activities.MainActivity;
 import com.cosicervin.administration.domain.Place;
+import com.cosicervin.administration.fragments.dialogs.EditPlaceDialogFragment;
 import com.cosicervin.administration.fragments.dialogs.NewPlaceFragment;
 import com.cosicervin.administration.listAdapters.PlaceListAdapter;
 
@@ -56,7 +59,7 @@ public class ChangePriceFragment extends Fragment implements GeneralFragment{
 
     SwipeRefreshLayout swipe;
 
-    Button newPlacebButton;
+    Button newPlaceButton;
 
     public ChangePriceFragment() {
         // Required empty public constructor
@@ -77,8 +80,8 @@ public class ChangePriceFragment extends Fragment implements GeneralFragment{
 
         placesListView = (ListView) view.findViewById(R.id.places_listView);
 
-        newPlacebButton = (Button) view.findViewById(R.id.new_place_button);
-        newPlacebButton.setOnClickListener(new View.OnClickListener() {
+        newPlaceButton = (Button) view.findViewById(R.id.new_place_button);
+        newPlaceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NewPlaceFragment newPlaceFragment = new NewPlaceFragment();
@@ -86,43 +89,38 @@ public class ChangePriceFragment extends Fragment implements GeneralFragment{
             }
         });
 
+        swipe =(SwipeRefreshLayout) view.findViewById(R.id.price_swipe_layout);
 
-        places = new ArrayList<>();
-        adapter = new PlaceListAdapter(getActivity().getApplicationContext(), R.layout.places_list_layout, new View.OnClickListener() {
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View v) {
-
-                selectedPlace = (Place) v.getTag(R.id.place);
-
-                EditText placeNameEdit = (EditText) v.getTag(R.id.place_name_id);
-                EditText carPriceEdit = (EditText) v.getTag(R.id.place_car_price_id);
-                EditText vanPriceEdit = (EditText) v.getTag(R.id.place_van_price_id);
-                EditText busPriceEdit = (EditText) v.getTag(R.id.place_bus_price_id);
-
-                selectedPlace.setName(placeNameEdit.getText().toString());
-                selectedPlace.setCarPrice(Integer.parseInt(carPriceEdit.getText().toString()));
-                selectedPlace.setVanPrice(Integer.parseInt(vanPriceEdit.getText().toString()));
-                selectedPlace.setBusPrice(Integer.parseInt(busPriceEdit.getText().toString()));
-
-                changePlacePrices();
-
-                adapter.deleteAll();
-                adapter.notifyDataSetChanged();
+            public void onRefresh() {
                 fetchPlacesFromServer();
-                adapter.notifyDataSetChanged();
-
-
+                swipe.setRefreshing(false);
             }
         });
 
+        places = new ArrayList<>();
+        adapter = new PlaceListAdapter(getActivity().getApplicationContext(), R.layout.places_list_layout);
+
         placesListView.setAdapter(adapter);
+        placesListView.setSelection(R.drawable.gratis_selector);
+
+        placesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedPlace = places.get(position);
+            }
+        });
 
         fetchPlacesFromServer();
+
+        registerForContextMenu(placesListView);
 
 
 
         return view;
     }
+  
 
     private void fetchPlacesFromServer(){
         final Map<String, String> params = new HashMap<>();
@@ -137,6 +135,7 @@ public class ChangePriceFragment extends Fragment implements GeneralFragment{
 
                 adapter.deleteAll();
                 adapter.notifyDataSetChanged();
+                places.clear();
                 try {
                     JSONArray array = response.getJSONArray("places");
 
@@ -173,46 +172,37 @@ public class ChangePriceFragment extends Fragment implements GeneralFragment{
         });
 
         requestQueue.add(customRequest);
-
     }
 
-    private void changePlacePrices(){
-        Map<String, String> params = new HashMap<>();
-        params.put("token", serverRequestToken);
-        params.put("service", "16");
-        params.put("place_id",Integer.toString(selectedPlace.getId()));
-        params.put("place_name", selectedPlace.getName());
-        params.put("car_price", Integer.toString(selectedPlace.getCarPrice()));
-        params.put("van_price", Integer.toString(selectedPlace.getVanPrice()));
-        params.put("bus_price", Integer.toString(selectedPlace.getBusPrice()));
-
-        final String URL = serverUrl + "/administration_services.php";
-
-        CustomRequest customRequest = new CustomRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                int code = 1;
-
-                try {
-                    code = response.getInt("code");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                if(code == 2){
-                    Toast.makeText(getContext(), "Gespeichert", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        requestQueue.add(customRequest);
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        if(v.getId() == R.id.places_listView){
+            menu.add("Bearbeiten");
+        }
     }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getTitle().toString()){
+            case "Bearbeiten":{
+
+                if(selectedPlace != null) {
+
+                    EditPlaceDialogFragment editPlaceDialogFragment = new EditPlaceDialogFragment();
+
+                    editPlaceDialogFragment.setPlace(selectedPlace);
+                    editPlaceDialogFragment.show(getFragmentManager(), "Edit place price");
+
+
+                }else{
+                    Toast.makeText(getActivity().getApplicationContext(), "Bitte ein ort wählen.", Toast.LENGTH_SHORT).show();
+                }
+               return true;
+            }
+
+            default: return false;
+        }
+    }
 
 
 }

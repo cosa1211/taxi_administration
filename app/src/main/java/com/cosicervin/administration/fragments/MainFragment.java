@@ -3,6 +3,7 @@ package com.cosicervin.administration.fragments;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -188,6 +189,8 @@ public class MainFragment extends Fragment implements GeneralFragment {
 
             menu.add("E-Mail schicken");
 
+            menu.add("SMS schicken");
+
         }
     }
 
@@ -252,6 +255,13 @@ public class MainFragment extends Fragment implements GeneralFragment {
                 intent.putExtra(Intent.EXTRA_EMAIL, ridesInDataBase.get(selectedRide).getEmail());
 
                 startActivity(Intent.createChooser(intent, "Schicke E-Mail"));
+
+                return true;
+
+            case "SMS schicken":
+
+                String number = ridesInDataBase.get(selectedRide).getPhone();  // The number on which you want to send SMS
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null)));
 
                 return true;
         }

@@ -7,8 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.cosicervin.administration.R;
 import com.cosicervin.administration.domain.Place;
@@ -24,11 +23,9 @@ public class PlaceListAdapter extends ArrayAdapter {
 
     ArrayList<Place> data = new ArrayList<>();
 
-    View.OnClickListener onButtonClickedListener;
 
-    public PlaceListAdapter(@NonNull Context context, @LayoutRes int resource, View.OnClickListener listener) {
+    public PlaceListAdapter(@NonNull Context context, @LayoutRes int resource) {
         super(context, resource);
-        onButtonClickedListener = listener;
     }
 
 
@@ -38,11 +35,10 @@ public class PlaceListAdapter extends ArrayAdapter {
     }
 
     static  class Holder{
-        EditText PLACE_NAME;
-        EditText CAR_PRICE;
-        EditText VAN_PRICE;
-        EditText BUS_PRICE;
-        Button BUTTON;
+        TextView PLACE_NAME;
+        TextView CAR_PRICE;
+        TextView VAN_PRICE;
+        TextView BUS_PRICE;
     }
 
     public void add(Place place) {
@@ -80,15 +76,14 @@ public class PlaceListAdapter extends ArrayAdapter {
 
             holder = new PlaceListAdapter.Holder();
 
-            holder.PLACE_NAME = (EditText) row.findViewById(R.id.place_name_edit);
+            holder.PLACE_NAME = (TextView) row.findViewById(R.id.place_name_edit);
 
-            holder.CAR_PRICE = (EditText) row.findViewById(R.id.place_car_price_edit);
+            holder.CAR_PRICE = (TextView) row.findViewById(R.id.place_car_price_edit);
 
-            holder.VAN_PRICE = (EditText) row.findViewById(R.id.place_van_price_edit);
+            holder.VAN_PRICE = (TextView) row.findViewById(R.id.place_van_price_edit);
 
-            holder.BUS_PRICE = (EditText) row.findViewById(R.id.place_bus_price_edit);
+            holder.BUS_PRICE = (TextView) row.findViewById(R.id.place_bus_price_edit);
 
-            holder.BUTTON = (Button) row.findViewById(R.id.save_place_button);
 
             row.setTag(holder);
         }else {
@@ -107,14 +102,6 @@ public class PlaceListAdapter extends ArrayAdapter {
 
         holder.BUS_PRICE.setText(Integer.toString(place.getBusPrice()));
 
-        holder.BUTTON.setTag(R.id.place, place);
-
-        holder.BUTTON.setTag(R.id.place_name_id, holder.PLACE_NAME);
-        holder.BUTTON.setTag(R.id.place_car_price_id, holder.CAR_PRICE);
-        holder.BUTTON.setTag(R.id.place_van_price_id, holder.VAN_PRICE);
-        holder.BUTTON.setTag(R.id.place_bus_price_id, holder.BUS_PRICE);
-
-        holder.BUTTON.setOnClickListener(onButtonClickedListener);
 
 
         return  row;
